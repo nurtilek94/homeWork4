@@ -1,0 +1,24 @@
+SELECT *FROM customer where country = 'Canada';
+SELECT country FROM customer;
+SELECT count(*)FROM orders;
+SELEct MAX(unit_price)FROM product;
+SELECT SUM(total_amount)FROM orders;
+SELECT SUM(total_amount)FROM orders WHERE order_date BETWEEN to_timestamp('Jan 01 2014 ', 'MON DD YYYY') AND to_timestamp('Dec 31 2014 ', 'MON DD YYYY');
+SELECT AVG(total_amount)FROM orders;
+SELECT first_name,avg(total_amount)FROM customer join orders o on customer.id = o.customer_id group by first_name;
+SELECT *FROM customer WHERE country='Brazil' or country='Spain';
+SELECT * FROM orders WHERE order_date BETWEEN 'Jan 1 2013' AND 'Dec 31 2014' AND orders.total_amount < 100.00;
+SELECT *FROM customer WHERE country IN ('Spain','Germany','France','Italy')ORDER BY country;
+SELECT customer.country,supplier.country FROM supplier, customer WHERE supplier.country = customer.country;
+SELECT *FROM customer where customer.first_name LIKE ('Jo%');
+--variant 1--| SELECT first_name FROM customer where first_name LIKE ('%a') and customer.first_name LIKE '____';
+--variant 2--| SELECT first_name FROM customer WHERE first_name LIKE '___a';
+SELECT country, COUNT (*) AS Number FROM customer GROUP BY country ;
+SELECT country, COUNT (*) AS Number FROM customer GROUP BY country ORDER BY country DESC;
+SELECT sum(total_amount),count(*),orders.customer_id FROM orders JOIN customer c on c.id = orders.customer_id GROUP BY customer_id order by sum(total_amount) DESC ;
+SELECT sum(total_amount),count(*),orders.customer_id FROM orders JOIN customer c on c.id = orders.customer_id WHERE customer_id >20 group by orders.customer_id;
+
+
+
+
+
