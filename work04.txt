@@ -16,7 +16,9 @@ SELECT *FROM customer where customer.first_name LIKE ('Jo%');
 SELECT country, COUNT (*) AS Number FROM customer GROUP BY country ;
 SELECT country, COUNT (*) AS Number FROM customer GROUP BY country ORDER BY count(country) DESC;
 SELECT sum(total_amount),count(*),orders.customer_id FROM orders JOIN customer c on c.id = orders.customer_id GROUP BY customer_id order by sum(total_amount) DESC ;
-SELECT sum(total_amount),count(*),orders.customer_id FROM orders JOIN customer c on c.id = orders.customer_id WHERE customer_id >20 group by orders.customer_id;
+SELECT sum(total_amount),count(*),orders.customer_id FROM orders JOIN customer c on c.id = orders.customer_id
+group by orders.customer_id
+HAVING count(*) >20;
 
 
 
