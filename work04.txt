@@ -14,7 +14,7 @@ SELECT *FROM customer where customer.first_name LIKE ('Jo%');
 --variant 1--| SELECT first_name FROM customer where first_name LIKE ('%a') and customer.first_name LIKE '____';
 --variant 2--| SELECT first_name FROM customer WHERE first_name LIKE '___a';
 SELECT country, COUNT (*) AS Number FROM customer GROUP BY country ;
-SELECT country, COUNT (*) AS Number FROM customer GROUP BY country ORDER BY country DESC;
+SELECT country, COUNT (*) AS Number FROM customer GROUP BY country ORDER BY count(country) DESC;
 SELECT sum(total_amount),count(*),orders.customer_id FROM orders JOIN customer c on c.id = orders.customer_id GROUP BY customer_id order by sum(total_amount) DESC ;
 SELECT sum(total_amount),count(*),orders.customer_id FROM orders JOIN customer c on c.id = orders.customer_id WHERE customer_id >20 group by orders.customer_id;
 
